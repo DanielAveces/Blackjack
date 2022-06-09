@@ -1,2 +1,63 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+############### Blackjack Project #####################
+
+#Difficulty Normal 😎: Use all Hints below to complete the project.
+#Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
+#Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
+#Difficulty Expert 🤯: Only use Hint 1 to complete the project.
+
+############### Our Blackjack House Rules #####################
+
+## The deck is unlimited in size. 
+## There are no jokers. 
+## The Jack/Queen/King all count as 10.
+## The the Ace can count as 11 or 1.
+## Use the following list as the deck of cards:
+## cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+## The cards in the list have equal probability of being drawn.
+## Cards are not removed from the deck as they are drawn.
+## The computer is the dealer.
+
+import random
+
+deck = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+
+game1 = ""
+
+def blackjack():
+  card = random.choices(deck, k=2)
+  hand = card[0] + card[1]
+  game = True
+  print(f"{card} = {hand}")
+  while game is True:
+    if hand == 21:
+      print("Congrats! Blackjack")
+      game = False
+    
+    game1 = input("Hit (y) or pass (n) \n")
+    
+    if game1 == "n": 
+      print(f"Your hand is {hand}")
+      game = False  
+    
+    elif game1 == "y":
+      hand1 = hand
+      card2 = random.choice(deck)
+      hand += card2
+      print(f"{hand1} + {card2} = {hand}")
+      if hand > 21:
+        print("You lose")
+        game = False
+      elif hand == 21:
+        print("Congrats! Blackjack")
+        game = False
+        
+    
+    elif hand > 21:
+      deck[0] = 1
+    
+    
+  
+
+blackjack()
